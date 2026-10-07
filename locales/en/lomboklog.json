@@ -1,0 +1,8 @@
+{
+  "lomboklog.error.invalid_level": "The log level is not one of the eight RFC 5424 severities.",
+  "lomboklog.error.invalid_format": "The output format is not supported.",
+  "lomboklog.error.invalid_record": "The log record or its context has an invalid shape.",
+  "lomboklog.error.invalid_channel": "The channel name must be 1 to 64 characters of letters, digits, '_', '.' or '-'.",
+  "lomboklog.error.invalid_time": "The timestamp must be an integer number of milliseconds between 0 and 253402300799999.",
+  "lomboklog.error.invalid_option": "A redaction option is invalid."
+}

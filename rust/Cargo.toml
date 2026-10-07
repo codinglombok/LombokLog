@@ -1,0 +1,22 @@
+[package]
+name = "lomboklog"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Structured logging core: RFC 5424 levels, secret redaction, message interpolation and byte-identical JSON, line and logfmt formatters. Part of the Lombok Ecosystem."
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/codinglombok/LombokLog"
+homepage = "https://github.com/codinglombok/LombokLog"
+readme = "../README.md"
+keywords = ["logging", "log", "structured-logging", "redaction", "logfmt"]
+exclude = ["tests/*", ".gitignore"]
+categories = ["development-tools::debugging", "no-std", "encoding"]
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
+
+[lib]
+path = "src/lib.rs"

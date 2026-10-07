@@ -1,0 +1,4495 @@
+{
+ "format": "lomboklog-vectors-v1",
+ "specVersion": "0.1.0",
+ "note": "Normative cross-language vectors. Each case calls `fn` with `args`; `expect` is {result} or {error: code}.",
+ "groups": [
+  {
+   "name": "golden",
+   "cases": [
+    {
+     "name": "parseLevel emergency",
+     "fn": "parseLevel",
+     "args": [
+      "emergency"
+     ],
+     "expect": {
+      "result": "emergency"
+     }
+    },
+    {
+     "name": "severity emergency",
+     "fn": "severity",
+     "args": [
+      "emergency"
+     ],
+     "expect": {
+      "result": 0
+     }
+    },
+    {
+     "name": "parseLevel alert",
+     "fn": "parseLevel",
+     "args": [
+      "alert"
+     ],
+     "expect": {
+      "result": "alert"
+     }
+    },
+    {
+     "name": "severity alert",
+     "fn": "severity",
+     "args": [
+      "alert"
+     ],
+     "expect": {
+      "result": 1
+     }
+    },
+    {
+     "name": "parseLevel critical",
+     "fn": "parseLevel",
+     "args": [
+      "critical"
+     ],
+     "expect": {
+      "result": "critical"
+     }
+    },
+    {
+     "name": "severity critical",
+     "fn": "severity",
+     "args": [
+      "critical"
+     ],
+     "expect": {
+      "result": 2
+     }
+    },
+    {
+     "name": "parseLevel error",
+     "fn": "parseLevel",
+     "args": [
+      "error"
+     ],
+     "expect": {
+      "result": "error"
+     }
+    },
+    {
+     "name": "severity error",
+     "fn": "severity",
+     "args": [
+      "error"
+     ],
+     "expect": {
+      "result": 3
+     }
+    },
+    {
+     "name": "parseLevel warning",
+     "fn": "parseLevel",
+     "args": [
+      "warning"
+     ],
+     "expect": {
+      "result": "warning"
+     }
+    },
+    {
+     "name": "severity warning",
+     "fn": "severity",
+     "args": [
+      "warning"
+     ],
+     "expect": {
+      "result": 4
+     }
+    },
+    {
+     "name": "parseLevel notice",
+     "fn": "parseLevel",
+     "args": [
+      "notice"
+     ],
+     "expect": {
+      "result": "notice"
+     }
+    },
+    {
+     "name": "severity notice",
+     "fn": "severity",
+     "args": [
+      "notice"
+     ],
+     "expect": {
+      "result": 5
+     }
+    },
+    {
+     "name": "parseLevel info",
+     "fn": "parseLevel",
+     "args": [
+      "info"
+     ],
+     "expect": {
+      "result": "info"
+     }
+    },
+    {
+     "name": "severity info",
+     "fn": "severity",
+     "args": [
+      "info"
+     ],
+     "expect": {
+      "result": 6
+     }
+    },
+    {
+     "name": "parseLevel debug",
+     "fn": "parseLevel",
+     "args": [
+      "debug"
+     ],
+     "expect": {
+      "result": "debug"
+     }
+    },
+    {
+     "name": "severity debug",
+     "fn": "severity",
+     "args": [
+      "debug"
+     ],
+     "expect": {
+      "result": 7
+     }
+    },
+    {
+     "name": "parseLevel upper case",
+     "fn": "parseLevel",
+     "args": [
+      "WARNING"
+     ],
+     "expect": {
+      "result": "warning"
+     }
+    },
+    {
+     "name": "parseLevel mixed case",
+     "fn": "parseLevel",
+     "args": [
+      "Info"
+     ],
+     "expect": {
+      "result": "info"
+     }
+    },
+    {
+     "name": "parseLevel alias warn rejected",
+     "fn": "parseLevel",
+     "args": [
+      "warn"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel alias fatal rejected",
+     "fn": "parseLevel",
+     "args": [
+      "fatal"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel empty",
+     "fn": "parseLevel",
+     "args": [
+      ""
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel padded",
+     "fn": "parseLevel",
+     "args": [
+      " info"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel number",
+     "fn": "parseLevel",
+     "args": [
+      3
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel null",
+     "fn": "parseLevel",
+     "args": [
+      null
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "parseLevel non-ASCII case fold not applied",
+     "fn": "parseLevel",
+     "args": [
+      "\u0130NFO"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "severity unknown",
+     "fn": "severity",
+     "args": [
+      "trace"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "isEnabled emergency min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "emergency"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min alert",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "alert"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min critical",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "critical"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min error",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "error"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min warning",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "warning"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min notice",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min info",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled emergency min debug",
+     "fn": "isEnabled",
+     "args": [
+      "emergency",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled alert min alert",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "alert"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min critical",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "critical"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min error",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "error"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min warning",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "warning"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min notice",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min info",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled alert min debug",
+     "fn": "isEnabled",
+     "args": [
+      "alert",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled critical min alert",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled critical min critical",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "critical"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min error",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "error"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min warning",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "warning"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min notice",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min info",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled critical min debug",
+     "fn": "isEnabled",
+     "args": [
+      "critical",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled error min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled error min alert",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled error min critical",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "critical"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled error min error",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "error"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled error min warning",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "warning"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled error min notice",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled error min info",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled error min debug",
+     "fn": "isEnabled",
+     "args": [
+      "error",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled warning min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled warning min alert",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled warning min critical",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "critical"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled warning min error",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "error"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled warning min warning",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "warning"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled warning min notice",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled warning min info",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled warning min debug",
+     "fn": "isEnabled",
+     "args": [
+      "warning",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled notice min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled notice min alert",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled notice min critical",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "critical"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled notice min error",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "error"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled notice min warning",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "warning"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled notice min notice",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "notice"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled notice min info",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled notice min debug",
+     "fn": "isEnabled",
+     "args": [
+      "notice",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled info min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min alert",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min critical",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "critical"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min error",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "error"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min warning",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "warning"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min notice",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "notice"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled info min info",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "info"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled info min debug",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled debug min emergency",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "emergency"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min alert",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "alert"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min critical",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "critical"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min error",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "error"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min warning",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "warning"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min notice",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "notice"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min info",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "info"
+     ],
+     "expect": {
+      "result": false
+     }
+    },
+    {
+     "name": "isEnabled debug min debug",
+     "fn": "isEnabled",
+     "args": [
+      "debug",
+      "debug"
+     ],
+     "expect": {
+      "result": true
+     }
+    },
+    {
+     "name": "isEnabled bad level",
+     "fn": "isEnabled",
+     "args": [
+      "x",
+      "info"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "isEnabled bad minimum",
+     "fn": "isEnabled",
+     "args": [
+      "info",
+      "x"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "interpolate string",
+     "fn": "interpolate",
+     "args": [
+      "user {name} logged in",
+      {
+       "name": "ana"
+      }
+     ],
+     "expect": {
+      "result": "user ana logged in"
+     }
+    },
+    {
+     "name": "interpolate integer",
+     "fn": "interpolate",
+     "args": [
+      "took {ms} ms",
+      {
+       "ms": 42
+      }
+     ],
+     "expect": {
+      "result": "took 42 ms"
+     }
+    },
+    {
+     "name": "interpolate fraction",
+     "fn": "interpolate",
+     "args": [
+      "ratio {r}",
+      {
+       "r": 0.5
+      }
+     ],
+     "expect": {
+      "result": "ratio 0.5"
+     }
+    },
+    {
+     "name": "interpolate negative",
+     "fn": "interpolate",
+     "args": [
+      "{n}",
+      {
+       "n": -3
+      }
+     ],
+     "expect": {
+      "result": "-3"
+     }
+    },
+    {
+     "name": "interpolate large number uses exponent",
+     "fn": "interpolate",
+     "args": [
+      "{n}",
+      {
+       "n": 1e+21
+      }
+     ],
+     "expect": {
+      "result": "1e+21"
+     }
+    },
+    {
+     "name": "interpolate small number uses exponent",
+     "fn": "interpolate",
+     "args": [
+      "{n}",
+      {
+       "n": 1e-7
+      }
+     ],
+     "expect": {
+      "result": "1e-7"
+     }
+    },
+    {
+     "name": "interpolate 1e20 is plain",
+     "fn": "interpolate",
+     "args": [
+      "{n}",
+      {
+       "n": 100000000000000000000
+      }
+     ],
+     "expect": {
+      "result": "100000000000000000000"
+     }
+    },
+    {
+     "name": "interpolate 0.000001 is plain",
+     "fn": "interpolate",
+     "args": [
+      "{n}",
+      {
+       "n": 0.000001
+      }
+     ],
+     "expect": {
+      "result": "0.000001"
+     }
+    },
+    {
+     "name": "interpolate booleans",
+     "fn": "interpolate",
+     "args": [
+      "{a}/{b}",
+      {
+       "a": true,
+       "b": false
+      }
+     ],
+     "expect": {
+      "result": "true/false"
+     }
+    },
+    {
+     "name": "interpolate null",
+     "fn": "interpolate",
+     "args": [
+      "v={v}",
+      {
+       "v": null
+      }
+     ],
+     "expect": {
+      "result": "v=null"
+     }
+    },
+    {
+     "name": "interpolate missing key kept",
+     "fn": "interpolate",
+     "args": [
+      "hi {who}",
+      {}
+     ],
+     "expect": {
+      "result": "hi {who}"
+     }
+    },
+    {
+     "name": "interpolate object kept",
+     "fn": "interpolate",
+     "args": [
+      "{o}",
+      {
+       "o": {
+        "a": 1
+       }
+      }
+     ],
+     "expect": {
+      "result": "{o}"
+     }
+    },
+    {
+     "name": "interpolate array kept",
+     "fn": "interpolate",
+     "args": [
+      "{a}",
+      {
+       "a": [
+        1
+       ]
+      }
+     ],
+     "expect": {
+      "result": "{a}"
+     }
+    },
+    {
+     "name": "interpolate dotted key is literal",
+     "fn": "interpolate",
+     "args": [
+      "{a.b}",
+      {
+       "a.b": "x",
+       "a": {
+        "b": "y"
+       }
+      }
+     ],
+     "expect": {
+      "result": "x"
+     }
+    },
+    {
+     "name": "interpolate invalid key characters",
+     "fn": "interpolate",
+     "args": [
+      "{a b} {a-b}",
+      {
+       "a b": 1,
+       "a-b": 2
+      }
+     ],
+     "expect": {
+      "result": "{a b} {a-b}"
+     }
+    },
+    {
+     "name": "interpolate empty braces",
+     "fn": "interpolate",
+     "args": [
+      "{}",
+      {
+       "": 1
+      }
+     ],
+     "expect": {
+      "result": "{}"
+     }
+    },
+    {
+     "name": "interpolate nested braces",
+     "fn": "interpolate",
+     "args": [
+      "{{x}}",
+      {
+       "x": "1"
+      }
+     ],
+     "expect": {
+      "result": "{1}"
+     }
+    },
+    {
+     "name": "interpolate repeated",
+     "fn": "interpolate",
+     "args": [
+      "{x}{x}{x}",
+      {
+       "x": "ab"
+      }
+     ],
+     "expect": {
+      "result": "ababab"
+     }
+    },
+    {
+     "name": "interpolate unterminated",
+     "fn": "interpolate",
+     "args": [
+      "{x",
+      {
+       "x": 1
+      }
+     ],
+     "expect": {
+      "result": "{x"
+     }
+    },
+    {
+     "name": "interpolate value with braces not re-expanded",
+     "fn": "interpolate",
+     "args": [
+      "{a}",
+      {
+       "a": "{b}",
+       "b": "no"
+      }
+     ],
+     "expect": {
+      "result": "{b}"
+     }
+    },
+    {
+     "name": "interpolate unicode value",
+     "fn": "interpolate",
+     "args": [
+      "{s}",
+      {
+       "s": "kopi \u2615 \ud83d\ude00"
+      }
+     ],
+     "expect": {
+      "result": "kopi \u2615 \ud83d\ude00"
+     }
+    },
+    {
+     "name": "interpolate without context",
+     "fn": "interpolate",
+     "args": [
+      "plain {x}"
+     ],
+     "expect": {
+      "result": "plain {x}"
+     }
+    },
+    {
+     "name": "interpolate non-string message",
+     "fn": "interpolate",
+     "args": [
+      1,
+      {}
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "interpolate array context",
+     "fn": "interpolate",
+     "args": [
+      "{0}",
+      [
+       "a"
+      ]
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "interpolate numeric key",
+     "fn": "interpolate",
+     "args": [
+      "{0}",
+      {
+       "0": "zero"
+      }
+     ],
+     "expect": {
+      "result": "zero"
+     }
+    },
+    {
+     "name": "redact password",
+     "fn": "redact",
+     "args": [
+      {
+       "user": "ana",
+       "password": "p"
+      }
+     ],
+     "expect": {
+      "result": {
+       "user": "ana",
+       "password": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact case-insensitive",
+     "fn": "redact",
+     "args": [
+      {
+       "PassWord": "p",
+       "API_KEY": "k"
+      }
+     ],
+     "expect": {
+      "result": {
+       "PassWord": "[redacted]",
+       "API_KEY": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact substring",
+     "fn": "redact",
+     "args": [
+      {
+       "db_password_hash": "x",
+       "refresh_token_id": 1
+      }
+     ],
+     "expect": {
+      "result": {
+       "db_password_hash": "[redacted]",
+       "refresh_token_id": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact masks objects whole",
+     "fn": "redact",
+     "args": [
+      {
+       "credentials": {
+        "user": "a",
+        "pw": "b"
+       }
+      }
+     ],
+     "expect": {
+      "result": {
+       "credentials": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact nested",
+     "fn": "redact",
+     "args": [
+      {
+       "req": {
+        "headers": {
+         "Authorization": "Bearer x",
+         "accept": "*/*"
+        }
+       }
+      }
+     ],
+     "expect": {
+      "result": {
+       "req": {
+        "headers": {
+         "Authorization": "[redacted]",
+         "accept": "*/*"
+        }
+       }
+      }
+     }
+    },
+    {
+     "name": "redact inside arrays",
+     "fn": "redact",
+     "args": [
+      {
+       "users": [
+        {
+         "name": "a",
+         "secret": 1
+        },
+        {
+         "name": "b"
+        }
+       ]
+      }
+     ],
+     "expect": {
+      "result": {
+       "users": [
+        {
+         "name": "a",
+         "secret": "[redacted]"
+        },
+        {
+         "name": "b"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "name": "redact array values are not keys",
+     "fn": "redact",
+     "args": [
+      {
+       "list": [
+        "password",
+        "token"
+       ]
+      }
+     ],
+     "expect": {
+      "result": {
+       "list": [
+        "password",
+        "token"
+       ]
+      }
+     }
+    },
+    {
+     "name": "redact over-redaction is intended",
+     "fn": "redact",
+     "args": [
+      {
+       "author": "ana",
+       "shipping": "x"
+      }
+     ],
+     "expect": {
+      "result": {
+       "author": "[redacted]",
+       "shipping": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact extra keys",
+     "fn": "redact",
+     "args": [
+      {
+       "nik": "123",
+       "name": "a"
+      },
+      {
+       "redactKeys": [
+        "NIK"
+       ]
+      }
+     ],
+     "expect": {
+      "result": {
+       "nik": "[redacted]",
+       "name": "a"
+      }
+     }
+    },
+    {
+     "name": "redact extra keys keep defaults",
+     "fn": "redact",
+     "args": [
+      {
+       "nik": "1",
+       "password": "2"
+      },
+      {
+       "redactKeys": [
+        "nik"
+       ]
+      }
+     ],
+     "expect": {
+      "result": {
+       "nik": "[redacted]",
+       "password": "[redacted]"
+      }
+     }
+    },
+    {
+     "name": "redact custom mask",
+     "fn": "redact",
+     "args": [
+      {
+       "token": "t"
+      },
+      {
+       "mask": "***"
+      }
+     ],
+     "expect": {
+      "result": {
+       "token": "***"
+      }
+     }
+    },
+    {
+     "name": "redact null and numbers kept",
+     "fn": "redact",
+     "args": [
+      {
+       "a": null,
+       "b": 1,
+       "c": true
+      }
+     ],
+     "expect": {
+      "result": {
+       "a": null,
+       "b": 1,
+       "c": true
+      }
+     }
+    },
+    {
+     "name": "redact empty",
+     "fn": "redact",
+     "args": [
+      {}
+     ],
+     "expect": {
+      "result": {}
+     }
+    },
+    {
+     "name": "redact non-ASCII key not folded",
+     "fn": "redact",
+     "args": [
+      {
+       "PASSWORD\u0130": "x",
+       "pa\u017fsword": "y"
+      }
+     ],
+     "expect": {
+      "result": {
+       "PASSWORD\u0130": "[redacted]",
+       "pa\u017fsword": "y"
+      }
+     }
+    },
+    {
+     "name": "redact context not object",
+     "fn": "redact",
+     "args": [
+      [
+       1
+      ]
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "redact null context",
+     "fn": "redact",
+     "args": [
+      null
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "redact empty extra key rejected",
+     "fn": "redact",
+     "args": [
+      {},
+      {
+       "redactKeys": [
+        ""
+       ]
+      }
+     ],
+     "expect": {
+      "error": "invalid_option"
+     }
+    },
+    {
+     "name": "redact extra keys not array",
+     "fn": "redact",
+     "args": [
+      {},
+      {
+       "redactKeys": "nik"
+      }
+     ],
+     "expect": {
+      "error": "invalid_option"
+     }
+    },
+    {
+     "name": "redact mask not string",
+     "fn": "redact",
+     "args": [
+      {},
+      {
+       "mask": 1
+      }
+     ],
+     "expect": {
+      "error": "invalid_option"
+     }
+    },
+    {
+     "name": "redact options not object",
+     "fn": "redact",
+     "args": [
+      {},
+      "x"
+     ],
+     "expect": {
+      "error": "invalid_option"
+     }
+    },
+    {
+     "name": "redact truncates beyond depth 16",
+     "fn": "redact",
+     "args": [
+      {
+       "d": {
+        "d": {
+         "d": {
+          "d": {
+           "d": {
+            "d": {
+             "d": {
+              "d": {
+               "d": {
+                "d": {
+                 "d": {
+                  "d": {
+                   "d": {
+                    "d": {
+                     "d": {
+                      "d": {
+                       "d": {
+                        "leaf": 1
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "expect": {
+      "result": {
+       "d": {
+        "d": {
+         "d": {
+          "d": {
+           "d": {
+            "d": {
+             "d": {
+              "d": {
+               "d": {
+                "d": {
+                 "d": {
+                  "d": {
+                   "d": {
+                    "d": {
+                     "d": {
+                      "d": {
+                       "d": "[truncated]"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "name": "redact depth 16 kept",
+     "fn": "redact",
+     "args": [
+      {
+       "d": {
+        "d": {
+         "d": {
+          "d": {
+           "d": {
+            "d": {
+             "d": {
+              "d": {
+               "d": {
+                "d": {
+                 "d": {
+                  "d": {
+                   "d": {
+                    "d": {
+                     "d": {
+                      "leaf": 1
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     ],
+     "expect": {
+      "result": {
+       "d": {
+        "d": {
+         "d": {
+          "d": {
+           "d": {
+            "d": {
+             "d": {
+              "d": {
+               "d": {
+                "d": {
+                 "d": {
+                  "d": {
+                   "d": {
+                    "d": {
+                     "d": {
+                      "leaf": 1
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "name": "redact numeric keys ordered like ECMAScript",
+     "fn": "redact",
+     "args": [
+      {
+       "1": "y",
+       "2": "x",
+       "b": 1,
+       "a": 2
+      }
+     ],
+     "expect": {
+      "result": {
+       "1": "y",
+       "2": "x",
+       "b": 1,
+       "a": 2
+      }
+     }
+    },
+    {
+     "name": "formatTime epoch",
+     "fn": "formatTime",
+     "args": [
+      0
+     ],
+     "expect": {
+      "result": "1970-01-01T00:00:00.000Z"
+     }
+    },
+    {
+     "name": "formatTime ms",
+     "fn": "formatTime",
+     "args": [
+      1
+     ],
+     "expect": {
+      "result": "1970-01-01T00:00:00.001Z"
+     }
+    },
+    {
+     "name": "formatTime 2026",
+     "fn": "formatTime",
+     "args": [
+      1791331200000
+     ],
+     "expect": {
+      "result": "2026-10-07T00:00:00.000Z"
+     }
+    },
+    {
+     "name": "formatTime leap day",
+     "fn": "formatTime",
+     "args": [
+      951782400000
+     ],
+     "expect": {
+      "result": "2000-02-29T00:00:00.000Z"
+     }
+    },
+    {
+     "name": "formatTime 1900-free century",
+     "fn": "formatTime",
+     "args": [
+      4107542399999
+     ],
+     "expect": {
+      "result": "2100-02-28T23:59:59.999Z"
+     }
+    },
+    {
+     "name": "formatTime 2100-03-01",
+     "fn": "formatTime",
+     "args": [
+      4107542400000
+     ],
+     "expect": {
+      "result": "2100-03-01T00:00:00.000Z"
+     }
+    },
+    {
+     "name": "formatTime max",
+     "fn": "formatTime",
+     "args": [
+      253402300799999
+     ],
+     "expect": {
+      "result": "9999-12-31T23:59:59.999Z"
+     }
+    },
+    {
+     "name": "formatTime over max",
+     "fn": "formatTime",
+     "args": [
+      253402300800000
+     ],
+     "expect": {
+      "error": "invalid_time"
+     }
+    },
+    {
+     "name": "formatTime negative",
+     "fn": "formatTime",
+     "args": [
+      -1
+     ],
+     "expect": {
+      "error": "invalid_time"
+     }
+    },
+    {
+     "name": "formatTime fraction",
+     "fn": "formatTime",
+     "args": [
+      1.5
+     ],
+     "expect": {
+      "error": "invalid_time"
+     }
+    },
+    {
+     "name": "formatTime string",
+     "fn": "formatTime",
+     "args": [
+      "0"
+     ],
+     "expect": {
+      "error": "invalid_time"
+     }
+    },
+    {
+     "name": "json minimal",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"hello\"}"
+     }
+    },
+    {
+     "name": "json channel and context",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": "http",
+       "context": {
+        "status": 200,
+        "path": "/a"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"http\",\"message\":\"hello\",\"context\":{\"status\":200,\"path\":\"/a\"}}"
+     }
+    },
+    {
+     "name": "json level canonicalised",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "ERROR",
+       "message": "hello"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"error\",\"channel\":\"app\",\"message\":\"hello\"}"
+     }
+    },
+    {
+     "name": "json empty context omitted",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"hello\"}"
+     }
+    },
+    {
+     "name": "json redacts and interpolates redacted value",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "login {user} pw={password}",
+       "context": {
+        "user": "ana",
+        "password": "s3cret"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"login ana pw=[redacted]\",\"context\":{\"user\":\"ana\",\"password\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "json escapes newline and quotes",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "a\n\"b\"\\"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"a\\n\\\"b\\\"\\\\\"}"
+     }
+    },
+    {
+     "name": "json escapes control characters",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "\u0000\b\f\u001b"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"\\u0000\\b\\f\\u001b\"}"
+     }
+    },
+    {
+     "name": "json keeps non-ASCII and slash",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "caf\u00e9 /x \ud83d\ude00"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"caf\u00e9 /x \ud83d\ude00\"}"
+     }
+    },
+    {
+     "name": "json number formatting",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "a": 1,
+        "b": 1e+21,
+        "c": -0.0001,
+        "d": 1e-7,
+        "e": 123456789012
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"hello\",\"context\":{\"a\":1,\"b\":1e+21,\"c\":-0.0001,\"d\":1e-7,\"e\":123456789012}}"
+     }
+    },
+    {
+     "name": "json custom redact options",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "nik": "1"
+       }
+      },
+      "json",
+      {
+       "redactKeys": [
+        "nik"
+       ],
+       "mask": "-"
+      }
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"hello\",\"context\":{\"nik\":\"-\"}}"
+     }
+    },
+    {
+     "name": "line minimal",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] hello"
+     }
+    },
+    {
+     "name": "line with context",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "hello",
+       "channel": "db",
+       "context": {
+        "ms": 1500
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [db] hello {\"ms\":1500}"
+     }
+    },
+    {
+     "name": "line escapes newlines",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "a\r\nb\nc\rd"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] a\\nb\\nc\\nd"
+     }
+    },
+    {
+     "name": "line escapes other controls",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "tab\there \u001b[31mred"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] tab\\u0009here \\u001b[31mred"
+     }
+    },
+    {
+     "name": "line escapes DEL",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "xy"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] x\\u007fy"
+     }
+    },
+    {
+     "name": "line context redacted",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "cookie": "c",
+        "n": [
+         1,
+         2
+        ]
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] hello {\"cookie\":\"[redacted]\",\"n\":[1,2]}"
+     }
+    },
+    {
+     "name": "logfmt minimal",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello"
+     }
+    },
+    {
+     "name": "logfmt quoting",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello world",
+       "context": {
+        "a": "x=y",
+        "b": "say \"hi\"",
+        "c": "",
+        "d": "back\\slash"
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=\"hello world\" a=\"x=y\" b=\"say \\\"hi\\\"\" c=\"\" d=\"back\\\\slash\""
+     }
+    },
+    {
+     "name": "logfmt scalars",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "n": 1.5,
+        "t": true,
+        "z": null
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello n=1.5 t=true z=null"
+     }
+    },
+    {
+     "name": "logfmt nested flattened",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "http": {
+         "status": 404,
+         "req": {
+          "method": "GET"
+         }
+        }
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello http.status=404 http.req.method=GET"
+     }
+    },
+    {
+     "name": "logfmt arrays as JSON",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "ids": [
+         1,
+         2
+        ],
+        "tags": [
+         "a"
+        ]
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello ids=[1,2] tags=\"[\\\"a\\\"]\""
+     }
+    },
+    {
+     "name": "logfmt empty containers",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "o": {},
+        "a": []
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello o={} a=[]"
+     }
+    },
+    {
+     "name": "logfmt key sanitizing",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "a b": 1,
+        "c=d": 2,
+        "e\"": 3,
+        "": 4
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello a_b=1 c_d=2 e_=3 _=4"
+     }
+    },
+    {
+     "name": "logfmt control characters in values",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "l1\nl2\tx\u0001"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=\"l1\\nl2\\tx\\u0001\""
+     }
+    },
+    {
+     "name": "logfmt carriage return",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "a\rb"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=\"a\\rb\""
+     }
+    },
+    {
+     "name": "logfmt non-ASCII bare",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "caf\u00e9"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=caf\u00e9"
+     }
+    },
+    {
+     "name": "logfmt redaction",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "user": {
+         "password": "x",
+         "id": 7
+        }
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello user.password=[redacted] user.id=7"
+     }
+    },
+    {
+     "name": "logfmt numeric keys first",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": {
+        "9": 3,
+        "10": 2,
+        "z": 1
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=hello 9=3 10=2 z=1"
+     }
+    },
+    {
+     "name": "error unknown format",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello"
+      },
+      "xml"
+     ],
+     "expect": {
+      "error": "invalid_format"
+     }
+    },
+    {
+     "name": "error format before record",
+     "fn": "formatRecord",
+     "args": [
+      null,
+      "yaml"
+     ],
+     "expect": {
+      "error": "invalid_format"
+     }
+    },
+    {
+     "name": "error format not string",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello"
+      },
+      1
+     ],
+     "expect": {
+      "error": "invalid_format"
+     }
+    },
+    {
+     "name": "error record not object",
+     "fn": "formatRecord",
+     "args": [
+      "x",
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error bad level",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "trace",
+       "message": "hello"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "error missing level",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "message": "m"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "error missing time",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "level": "info",
+       "message": "m"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error empty time",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "",
+       "level": "info",
+       "message": "hello"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error time with newline",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026\n",
+       "level": "info",
+       "message": "hello"
+      },
+      "line"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error time not string",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": 0,
+       "level": "info",
+       "message": "hello"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error missing message",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error bad channel space",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": "a b"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_channel"
+     }
+    },
+    {
+     "name": "error empty channel",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": ""
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_channel"
+     }
+    },
+    {
+     "name": "error channel too long",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_channel"
+     }
+    },
+    {
+     "name": "channel 64 chars accepted",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc] hello"
+     }
+    },
+    {
+     "name": "error channel null",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "channel": null
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_channel"
+     }
+    },
+    {
+     "name": "error context array",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": [
+        1
+       ]
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error context null",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "context": null
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_record"
+     }
+    },
+    {
+     "name": "error level checked before time",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "level": "x"
+      },
+      "json"
+     ],
+     "expect": {
+      "error": "invalid_level"
+     }
+    },
+    {
+     "name": "error options checked before record",
+     "fn": "formatRecord",
+     "args": [
+      null,
+      "json",
+      {
+       "mask": 5
+      }
+     ],
+     "expect": {
+      "error": "invalid_option"
+     }
+    },
+    {
+     "name": "unknown record keys ignored",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "hello",
+       "extra": 1
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] hello"
+     }
+    }
+   ]
+  },
+  {
+   "name": "generated-regression",
+   "cases": [
+    {
+     "name": "generated 001 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "multi\nline {id}",
+       "context": {
+        "list": "line\nbreak",
+        "x y": "back\\"
+       },
+       "channel": "job-1"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"debug\",\"channel\":\"job-1\",\"message\":\"multi\\nline {id}\",\"context\":{\"list\":\"line\\nbreak\",\"x y\":\"back\\\\\"}}"
+     }
+    },
+    {
+     "name": "generated 002 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "{password}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z EMERGENCY [app] {password}"
+     }
+    },
+    {
+     "name": "generated 003 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "q\"uote",
+       "context": {
+        "ms": "x=y",
+        "x y": 1
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=app msg=\"q\\\"uote\" ms=\"x=y\" x_y=1"
+     }
+    },
+    {
+     "name": "generated 004 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "error",
+       "message": "q\"uote",
+       "context": {
+        "9": false,
+        "password": true,
+        "user": 1e-7
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"error\",\"channel\":\"app\",\"message\":\"q\\\"uote\",\"context\":{\"9\":false,\"password\":\"[redacted]\",\"user\":1e-7}}"
+     }
+    },
+    {
+     "name": "generated 005 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "multi\nline {id}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z NOTICE [app] multi\\nline {id}"
+     }
+    },
+    {
+     "name": "generated 006 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "m {user} {ms}",
+       "context": {
+        "list": {
+         "note": "",
+         "Token": [
+          1e-7
+         ]
+        },
+        "x y": "caf\u00e9"
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=critical channel=db.pool msg=\"m {user} {ms}\" list.note=\"\" list.Token=[redacted] x_y=caf\u00e9"
+     }
+    },
+    {
+     "name": "generated 007 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "q\"uote",
+       "context": {
+        "x y": false,
+        "user": null
+       },
+       "channel": "job-1"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"job-1\",\"message\":\"q\\\"uote\",\"context\":{\"x y\":false,\"user\":null}}"
+     }
+    },
+    {
+     "name": "generated 008 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "{password}",
+       "context": {
+        "msg": true,
+        "q=1": 3.25
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z NOTICE [app] {password} {\"msg\":true,\"q=1\":3.25}"
+     }
+    },
+    {
+     "name": "generated 009 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "m {user} {ms}",
+       "context": {
+        "path": "{user}",
+        "user": null,
+        "q=1": [
+         {
+          "9": {
+           "Token": "q\"t",
+           "q=1": "back\\"
+          },
+          "id": "q\"t"
+         },
+         false
+        ]
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=emergency channel=app msg=\"m null {ms}\" path={user} user=null q_1=\"[{\\\"9\\\":{\\\"Token\\\":\\\"[redacted]\\\",\\\"q=1\\\":\\\"back\\\\\\\\\\\"},\\\"id\\\":\\\"q\\\\\\\"t\\\"},false]\""
+     }
+    },
+    {
+     "name": "generated 010 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "q\"uote",
+       "context": {},
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"critical\",\"channel\":\"http\",\"message\":\"q\\\"uote\"}"
+     }
+    },
+    {
+     "name": "generated 011 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "q\"uote",
+       "context": {},
+       "channel": "job-1"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z EMERGENCY [job-1] q\"uote"
+     }
+    },
+    {
+     "name": "generated 012 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "q\"uote",
+       "context": {},
+       "channel": "job-1"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=job-1 msg=\"q\\\"uote\""
+     }
+    },
+    {
+     "name": "generated 013 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "plain",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"plain\"}"
+     }
+    },
+    {
+     "name": "generated 014 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "multi\nline {id}",
+       "context": {
+        "9": {
+         "q=1": "a b",
+         "x y": {}
+        },
+        "api_key": "ok",
+        "nested": null
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z NOTICE [app] multi\\nline {id} {\"9\":{\"q=1\":\"a b\",\"x y\":{}},\"api_key\":\"[redacted]\",\"nested\":null}"
+     }
+    },
+    {
+     "name": "generated 015 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "error",
+       "message": "m {user} {ms}",
+       "context": {
+        "list": {
+         "note": "line\nbreak"
+        }
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=error channel=app msg=\"m {user} {ms}\" list.note=\"line\\nbreak\""
+     }
+    },
+    {
+     "name": "generated 016 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "m {user} {ms}",
+       "context": {
+        "nested": "back\\",
+        "msg": "caf\u00e9"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"app\",\"message\":\"m {user} {ms}\",\"context\":{\"nested\":\"back\\\\\",\"msg\":\"caf\u00e9\"}}"
+     }
+    },
+    {
+     "name": "generated 017 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "m {user} {ms}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] m {user} {ms}"
+     }
+    },
+    {
+     "name": "generated 018 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "error",
+       "message": "q\"uote",
+       "context": {}
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=error channel=app msg=\"q\\\"uote\""
+     }
+    },
+    {
+     "name": "generated 019 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "plain",
+       "context": {
+        "path": {
+         "password": [
+          "a b",
+          1e+21
+         ]
+        },
+        "user": 1e-7
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"plain\",\"context\":{\"path\":{\"password\":\"[redacted]\"},\"user\":1e-7}}"
+     }
+    },
+    {
+     "name": "generated 020 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "plain",
+       "context": {
+        "user": "ok",
+        "x y": true
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] plain {\"user\":\"ok\",\"x y\":true}"
+     }
+    },
+    {
+     "name": "generated 021 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "multi\nline {id}",
+       "context": {}
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=app msg=\"multi\\nline {id}\""
+     }
+    },
+    {
+     "name": "generated 022 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "m {user} {ms}",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"emergency\",\"channel\":\"app\",\"message\":\"m {user} {ms}\"}"
+     }
+    },
+    {
+     "name": "generated 023 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "q\"uote",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [app] q\"uote"
+     }
+    },
+    {
+     "name": "generated 024 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "{password}",
+       "context": {
+        "user": "",
+        "list": [
+         true
+        ]
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=critical channel=db.pool msg={password} user=\"\" list=[true]"
+     }
+    },
+    {
+     "name": "generated 025 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "{password}",
+       "context": {
+        "q=1": "q\"t"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"app\",\"message\":\"{password}\",\"context\":{\"q=1\":\"q\\\"t\"}}"
+     }
+    },
+    {
+     "name": "generated 026 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "plain",
+       "context": {},
+       "channel": "http"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [http] plain"
+     }
+    },
+    {
+     "name": "generated 027 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "q\"uote",
+       "context": {
+        "id": -7,
+        "msg": null
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=alert channel=app msg=\"q\\\"uote\" id=-7 msg=null"
+     }
+    },
+    {
+     "name": "generated 028 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "plain",
+       "context": {
+        "path": {
+         "user": "tab\t"
+        },
+        "password": 123456
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"plain\",\"context\":{\"path\":{\"user\":\"tab\\t\"},\"password\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 029 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "{password}",
+       "context": {
+        "nested": "{user}"
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] {password} {\"nested\":\"{user}\"}"
+     }
+    },
+    {
+     "name": "generated 030 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "plain",
+       "context": {
+        "9": "q\"t",
+        "q=1": 1e-7
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=app msg=plain 9=\"q\\\"t\" q_1=1e-7"
+     }
+    },
+    {
+     "name": "generated 031 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "multi\nline {id}",
+       "context": {
+        "9": false,
+        "id": "q\"t",
+        "user": true
+       },
+       "channel": "job-1"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"job-1\",\"message\":\"multi\\nline q\\\"t\",\"context\":{\"9\":false,\"id\":\"q\\\"t\",\"user\":true}}"
+     }
+    },
+    {
+     "name": "generated 032 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "{password}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z DEBUG [app] {password}"
+     }
+    },
+    {
+     "name": "generated 033 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "error",
+       "message": "plain",
+       "context": {
+        "list": 123456
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=error channel=app msg=plain list=123456"
+     }
+    },
+    {
+     "name": "generated 034 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "multi\nline {id}",
+       "context": {
+        "list": [],
+        "api_key": 1e-7
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"app\",\"message\":\"multi\\nline {id}\",\"context\":{\"list\":[],\"api_key\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 035 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "multi\nline {id}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] multi\\nline {id}"
+     }
+    },
+    {
+     "name": "generated 036 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "m {user} {ms}",
+       "context": {
+        "list": null,
+        "user": "tab\t"
+       },
+       "channel": "http"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=critical channel=http msg=\"m tab\\t {ms}\" list=null user=\"tab\\t\""
+     }
+    },
+    {
+     "name": "generated 037 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "q\"uote",
+       "context": {
+        "Token": {}
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"app\",\"message\":\"q\\\"uote\",\"context\":{\"Token\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 038 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "multi\nline {id}",
+       "context": {
+        "x y": 3.25,
+        "ms": "line\nbreak"
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z CRITICAL [app] multi\\nline {id} {\"x y\":3.25,\"ms\":\"line\\nbreak\"}"
+     }
+    },
+    {
+     "name": "generated 039 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "m {user} {ms}",
+       "context": {}
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=\"m {user} {ms}\""
+     }
+    },
+    {
+     "name": "generated 040 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "{password}",
+       "context": {
+        "path": "caf\u00e9",
+        "msg": 0,
+        "user": "a b"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"emergency\",\"channel\":\"app\",\"message\":\"{password}\",\"context\":{\"path\":\"caf\u00e9\",\"msg\":0,\"user\":\"a b\"}}"
+     }
+    },
+    {
+     "name": "generated 041 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "m {user} {ms}",
+       "context": {},
+       "channel": "job-1"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [job-1] m {user} {ms}"
+     }
+    },
+    {
+     "name": "generated 042 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "{password}",
+       "context": {
+        "note": null
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=emergency channel=app msg={password} note=null"
+     }
+    },
+    {
+     "name": "generated 043 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "{password}",
+       "context": {
+        "9": null,
+        "path": 1,
+        "nested": 123456
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"emergency\",\"channel\":\"app\",\"message\":\"{password}\",\"context\":{\"9\":null,\"path\":1,\"nested\":123456}}"
+     }
+    },
+    {
+     "name": "generated 044 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "multi\nline {id}",
+       "context": {
+        "password": "a b"
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] multi\\nline {id} {\"password\":\"[redacted]\"}"
+     }
+    },
+    {
+     "name": "generated 045 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "m {user} {ms}",
+       "context": {
+        "list": {
+         "api_key": false,
+         "list": "ok"
+        },
+        "msg": "a b"
+       },
+       "channel": "http"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=notice channel=http msg=\"m {user} {ms}\" list.api_key=[redacted] list.list=ok msg=\"a b\""
+     }
+    },
+    {
+     "name": "generated 046 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "{password}",
+       "context": {
+        "9": false,
+        "ms": 1e-7
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"{password}\",\"context\":{\"9\":false,\"ms\":1e-7}}"
+     }
+    },
+    {
+     "name": "generated 047 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "multi\nline {id}",
+       "context": {
+        "q=1": null
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [app] multi\\nline {id} {\"q=1\":null}"
+     }
+    },
+    {
+     "name": "generated 048 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "plain",
+       "context": {}
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=alert channel=app msg=plain"
+     }
+    },
+    {
+     "name": "generated 049 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "multi\nline {id}",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"multi\\nline {id}\"}"
+     }
+    },
+    {
+     "name": "generated 050 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "plain",
+       "context": {
+        "user": true
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [app] plain {\"user\":true}"
+     }
+    },
+    {
+     "name": "generated 051 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "multi\nline {id}",
+       "context": {
+        "x y": null
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=app msg=\"multi\\nline {id}\" x_y=null"
+     }
+    },
+    {
+     "name": "generated 052 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "plain",
+       "context": {
+        "q=1": "a b",
+        "path": 3.25
+       },
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"debug\",\"channel\":\"http\",\"message\":\"plain\",\"context\":{\"q=1\":\"a b\",\"path\":3.25}}"
+     }
+    },
+    {
+     "name": "generated 053 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "multi\nline {id}",
+       "context": {
+        "id": "caf\u00e9",
+        "password": {
+         "ms": [
+          "caf\u00e9"
+         ]
+        }
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z EMERGENCY [app] multi\\nline caf\u00e9 {\"id\":\"caf\u00e9\",\"password\":\"[redacted]\"}"
+     }
+    },
+    {
+     "name": "generated 054 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "plain",
+       "context": {
+        "x y": null,
+        "msg": [
+         3.25,
+         0
+        ]
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=critical channel=app msg=plain x_y=null msg=[3.25,0]"
+     }
+    },
+    {
+     "name": "generated 055 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "m {user} {ms}",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"m {user} {ms}\"}"
+     }
+    },
+    {
+     "name": "generated 056 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "m {user} {ms}",
+       "context": {
+        "Token": [
+         "{user}"
+        ],
+        "nested": 123456,
+        "id": {
+         "Token": 1e+21
+        }
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z NOTICE [app] m {user} {ms} {\"Token\":\"[redacted]\",\"nested\":123456,\"id\":{\"Token\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 057 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "multi\nline {id}",
+       "context": {
+        "list": -7
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=emergency channel=db.pool msg=\"multi\\nline {id}\" list=-7"
+     }
+    },
+    {
+     "name": "generated 058 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "multi\nline {id}",
+       "context": {
+        "password": "a b"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"multi\\nline {id}\",\"context\":{\"password\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 059 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "plain",
+       "context": {
+        "x y": "back\\",
+        "nested": [
+         "q\"t",
+         [
+          "caf\u00e9",
+          [
+           ""
+          ]
+         ]
+        ],
+        "note": "line\nbreak"
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z DEBUG [app] plain {\"x y\":\"back\\\\\",\"nested\":[\"q\\\"t\",[\"caf\u00e9\",[\"\"]]],\"note\":\"line\\nbreak\"}"
+     }
+    },
+    {
+     "name": "generated 060 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "m {user} {ms}",
+       "context": {
+        "user": 3.25,
+        "Token": 1e-7
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=alert channel=app msg=\"m 3.25 {ms}\" user=3.25 Token=[redacted]"
+     }
+    },
+    {
+     "name": "generated 061 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "multi\nline {id}",
+       "context": {
+        "x y": true,
+        "list": "line\nbreak",
+        "id": {}
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"multi\\nline {id}\",\"context\":{\"x y\":true,\"list\":\"line\\nbreak\",\"id\":{}}}"
+     }
+    },
+    {
+     "name": "generated 062 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "{password}",
+       "context": {
+        "nested": [
+         [
+          [
+           "q\"t"
+          ]
+         ]
+        ]
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z DEBUG [app] {password} {\"nested\":[[[\"q\\\"t\"]]]}"
+     }
+    },
+    {
+     "name": "generated 063 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "m {user} {ms}",
+       "context": {
+        "Token": "{user}",
+        "nested": null
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=warning channel=app msg=\"m {user} {ms}\" Token=[redacted] nested=null"
+     }
+    },
+    {
+     "name": "generated 064 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "m {user} {ms}",
+       "context": {
+        "x y": {
+         "id": "ok",
+         "msg": true
+        },
+        "q=1": 1e-7
+       },
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"notice\",\"channel\":\"http\",\"message\":\"m {user} {ms}\",\"context\":{\"x y\":{\"id\":\"ok\",\"msg\":true},\"q=1\":1e-7}}"
+     }
+    },
+    {
+     "name": "generated 065 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "multi\nline {id}",
+       "context": {
+        "path": 1e+21
+       },
+       "channel": "db.pool"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z CRITICAL [db.pool] multi\\nline {id} {\"path\":1e+21}"
+     }
+    },
+    {
+     "name": "generated 066 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "q\"uote",
+       "context": {
+        "api_key": {
+         "api_key": {}
+        }
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=emergency channel=app msg=\"q\\\"uote\" api_key=[redacted]"
+     }
+    },
+    {
+     "name": "generated 067 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "multi\nline {id}",
+       "context": {
+        "q=1": {}
+       },
+       "channel": "db.pool"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"db.pool\",\"message\":\"multi\\nline {id}\",\"context\":{\"q=1\":{}}}"
+     }
+    },
+    {
+     "name": "generated 068 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "multi\nline {id}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z WARNING [app] multi\\nline {id}"
+     }
+    },
+    {
+     "name": "generated 069 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "{password}",
+       "context": {
+        "9": 0,
+        "api_key": "x=y"
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=debug channel=app msg={password} 9=0 api_key=[redacted]"
+     }
+    },
+    {
+     "name": "generated 070 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "q\"uote",
+       "context": {}
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"info\",\"channel\":\"app\",\"message\":\"q\\\"uote\"}"
+     }
+    },
+    {
+     "name": "generated 071 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "multi\nline {id}",
+       "context": {
+        "password": {
+         "path": null
+        },
+        "note": 0,
+        "Token": null
+       },
+       "channel": "job-1"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [job-1] multi\\nline {id} {\"password\":\"[redacted]\",\"note\":0,\"Token\":\"[redacted]\"}"
+     }
+    },
+    {
+     "name": "generated 072 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "multi\nline {id}",
+       "context": {
+        "Token": 3.25,
+        "user": null,
+        "password": "a b"
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=debug channel=db.pool msg=\"multi\\nline {id}\" Token=[redacted] user=null password=[redacted]"
+     }
+    },
+    {
+     "name": "generated 073 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "alert",
+       "message": "multi\nline {id}",
+       "context": {
+        "id": [
+         null
+        ]
+       },
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"alert\",\"channel\":\"http\",\"message\":\"multi\\nline {id}\",\"context\":{\"id\":[null]}}"
+     }
+    },
+    {
+     "name": "generated 074 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "m {user} {ms}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] m {user} {ms}"
+     }
+    },
+    {
+     "name": "generated 075 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "plain",
+       "context": {
+        "path": "",
+        "ms": {
+         "password": 1
+        }
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=emergency channel=app msg=plain path=\"\" ms.password=[redacted]"
+     }
+    },
+    {
+     "name": "generated 076 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "warning",
+       "message": "q\"uote",
+       "context": {
+        "q=1": "back\\",
+        "api_key": [
+         "caf\u00e9",
+         1e-7
+        ]
+       },
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"http\",\"message\":\"q\\\"uote\",\"context\":{\"q=1\":\"back\\\\\",\"api_key\":\"[redacted]\"}}"
+     }
+    },
+    {
+     "name": "generated 077 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "critical",
+       "message": "multi\nline {id}",
+       "context": {
+        "q=1": null
+       }
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z CRITICAL [app] multi\\nline {id} {\"q=1\":null}"
+     }
+    },
+    {
+     "name": "generated 078 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "m {user} {ms}",
+       "context": {
+        "api_key": {
+         "api_key": 3.25
+        },
+        "Token": []
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=debug channel=app msg=\"m {user} {ms}\" api_key=[redacted] Token=[redacted]"
+     }
+    },
+    {
+     "name": "generated 079 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "{password}",
+       "context": {
+        "password": -7,
+        "q=1": "ok",
+        "nested": "{user}"
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"debug\",\"channel\":\"app\",\"message\":\"[redacted]\",\"context\":{\"password\":\"[redacted]\",\"q=1\":\"ok\",\"nested\":\"{user}\"}}"
+     }
+    },
+    {
+     "name": "generated 080 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "debug",
+       "message": "plain",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z DEBUG [app] plain"
+     }
+    },
+    {
+     "name": "generated 081 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "m {user} {ms}",
+       "context": {
+        "msg": 1e+21,
+        "x y": [
+         "{user}",
+         "line\nbreak"
+        ]
+       }
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=\"m {user} {ms}\" msg=1e+21 x_y=\"[\\\"{user}\\\",\\\"line\\\\nbreak\\\"]\""
+     }
+    },
+    {
+     "name": "generated 082 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "m {user} {ms}",
+       "context": {},
+       "channel": "db.pool"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"db.pool\",\"message\":\"m {user} {ms}\"}"
+     }
+    },
+    {
+     "name": "generated 083 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "notice",
+       "message": "{password}",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z NOTICE [app] {password}"
+     }
+    },
+    {
+     "name": "generated 084 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "m {user} {ms}",
+       "context": {
+        "ms": false,
+        "password": false
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=db.pool msg=\"m {user} false\" ms=false password=[redacted]"
+     }
+    },
+    {
+     "name": "generated 085 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "error",
+       "message": "q\"uote",
+       "context": {},
+       "channel": "http"
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"error\",\"channel\":\"http\",\"message\":\"q\\\"uote\"}"
+     }
+    },
+    {
+     "name": "generated 086 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "q\"uote",
+       "context": {}
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z INFO [app] q\"uote"
+     }
+    },
+    {
+     "name": "generated 087 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "INFO",
+       "message": "m {user} {ms}",
+       "context": {
+        "Token": {
+         "path": {},
+         "Token": "caf\u00e9"
+        }
+       },
+       "channel": "db.pool"
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=db.pool msg=\"m {user} {ms}\" Token=[redacted]"
+     }
+    },
+    {
+     "name": "generated 088 json",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "Warning",
+       "message": "m {user} {ms}",
+       "context": {
+        "note": {
+         "list": null
+        },
+        "nested": [
+         "tab\t",
+         "q\"t"
+        ]
+       }
+      },
+      "json"
+     ],
+     "expect": {
+      "result": "{\"time\":\"2026-10-07T01:02:03.004Z\",\"level\":\"warning\",\"channel\":\"app\",\"message\":\"m {user} {ms}\",\"context\":{\"note\":{\"list\":null},\"nested\":[\"tab\\t\",\"q\\\"t\"]}}"
+     }
+    },
+    {
+     "name": "generated 089 line",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "emergency",
+       "message": "multi\nline {id}",
+       "context": {
+        "q=1": {
+         "path": "caf\u00e9",
+         "user": null
+        },
+        "nested": 1e+21
+       },
+       "channel": "db.pool"
+      },
+      "line"
+     ],
+     "expect": {
+      "result": "2026-10-07T01:02:03.004Z EMERGENCY [db.pool] multi\\nline {id} {\"q=1\":{\"path\":\"caf\u00e9\",\"user\":null},\"nested\":1e+21}"
+     }
+    },
+    {
+     "name": "generated 090 logfmt",
+     "fn": "formatRecord",
+     "args": [
+      {
+       "time": "2026-10-07T01:02:03.004Z",
+       "level": "info",
+       "message": "plain",
+       "context": {}
+      },
+      "logfmt"
+     ],
+     "expect": {
+      "result": "time=2026-10-07T01:02:03.004Z level=info channel=app msg=plain"
+     }
+    }
+   ]
+  }
+ ]
+}

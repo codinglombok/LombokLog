@@ -1,0 +1,8 @@
+{
+  "lomboklog.error.invalid_level": "Level log bukan salah satu dari delapan severity RFC 5424.",
+  "lomboklog.error.invalid_format": "Format keluaran tidak didukung.",
+  "lomboklog.error.invalid_record": "Bentuk record log atau konteksnya tidak sah.",
+  "lomboklog.error.invalid_channel": "Nama channel harus 1 sampai 64 karakter berupa huruf, angka, '_', '.' atau '-'.",
+  "lomboklog.error.invalid_time": "Stempel waktu harus bilangan bulat milidetik antara 0 dan 253402300799999.",
+  "lomboklog.error.invalid_option": "Opsi redaksi tidak sah."
+}
