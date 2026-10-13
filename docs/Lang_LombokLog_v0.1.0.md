@@ -1,14 +1,14 @@
 # Lang LombokLog v0.1.0
 
-## 1. Tingkat i18n
+## 1. i18n level
 
-Tingkat **E** (pesan error dan dokumentasi saja). Library tidak menerjemahkan isi log; teks log adalah milik aplikasi.
+Level **E** (error messages and documentation only). The library does not translate log content; log text belongs to the application. The source language of all messages and documentation is English.
 
-## 2. Katalog ID pesan (normatif)
+## 2. Message ID catalog (normative)
 
-Format `lomboklog.<jenis>.<kode>`. Berkas katalog: `locales/<bcp47>/lomboklog.json`, satu berkas untuk semua port.
+Format `lomboklog.<kind>.<code>`. Catalog files: `locales/<bcp47>/lomboklog.json`, one file for all ports.
 
-| ID | Teks sumber (en) | Kode galat |
+| ID | Source text (en) | Error code |
 |---|---|---|
 | `lomboklog.error.invalid_level` | The log level is not one of the eight RFC 5424 severities. | `invalid_level` |
 | `lomboklog.error.invalid_format` | The output format is not supported. | `invalid_format` |
@@ -17,18 +17,18 @@ Format `lomboklog.<jenis>.<kode>`. Berkas katalog: `locales/<bcp47>/lomboklog.js
 | `lomboklog.error.invalid_time` | The timestamp must be an integer number of milliseconds between 0 and 253402300799999. | `invalid_time` |
 | `lomboklog.error.invalid_option` | A redaction option is invalid. | `invalid_option` |
 
-Galat membawa `code` (kontrak, sama di semua port) dan `messageId`. Pesan `message` di objek galat berbahasa Inggris dan tidak bersifat normatif.
+An error carries `code` (contract, the same in all ports) and `messageId`. The `message` field of the error object is in English and is not normative.
 
-## 3. Cakupan saat ini
+## 3. Current coverage
 
-Core-20: 2 dari 20 (`en`, `id`). Paket Nusantara: 0 dari 6. Bahasa lain belum ada. Katalog bahasa tambahan harus ditinjau penutur asli sebelum diterima.
+Core-20: 2 of 20 (`en`, `id`). Nusantara pack: 0 of 6. No other languages yet. Catalogs for additional languages must be reviewed by a native speaker before they are accepted.
 
-## 4. Cara menambah bahasa
+## 4. How to add a language
 
-1. Salin `locales/en/lomboklog.json` ke `locales/<bcp47>/lomboklog.json`.
-2. Terjemahkan nilai; kunci tidak diubah.
-3. Minta tinjauan penutur asli, lalu ajukan PR.
+1. Copy `locales/en/lomboklog.json` to `locales/<bcp47>/lomboklog.json`.
+2. Translate the values; keys are not changed.
+3. Ask a native speaker to review, then open a pull request.
 
-## 5. Ketergantungan LombokLocale
+## 5. Dependency on LombokLocale
 
-Tidak ada pada 0.1.0. Konsumen yang memakai LombokLocale dapat me-resolve `messageId` terhadap katalog di atas.
+None in 0.1.0. A consumer that uses LombokLocale can resolve `messageId` against the catalogs above.

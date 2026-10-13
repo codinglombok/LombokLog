@@ -1,30 +1,30 @@
 # Map LombokLog v0.1.0
 
-## 1. Posisi dependensi
+## 1. Dependency position
 
-L0. Posisi cluster dan nomor katalog mengikuti dokumen induk ekosistem v3.6 (tidak di-commit, ADR-024). Tidak memiliki dependensi Lombok wajib.
+L0. The cluster position and catalog number follow the ecosystem parent document v3.6 (not committed, ADR-024). No required Lombok dependencies.
 
-## 2. Contoh dependen di ekosistem
+## 2. Example dependents in the ecosystem
 
-Bagian ini satu-satunya tempat nama aplikasi atau framework boleh muncul (ADR-019). Ini ilustrasi, bukan kepemilikan; siapa pun dapat memakai LombokLog.
+This section is the only place where application or framework names may appear (ADR-019). It is an illustration, not ownership; anyone can use LombokLog.
 
-| Pemakai | Jenis | Status integrasi | Keterangan |
+| Dependent | Kind | Integration status | Notes |
 |---|---|---|---|
-| LombokClarion v3 | Framework | rencana (F7) | Menggantikan paket log internal v2 (level, redaksi, formatter JSON dan line) |
-| LombokSQL | Library L0 | rencana (opsional) | Pencatatan query yang dikompilasi |
-| LombokAuth, LombokSecurity | Library | rencana (opsional) | Jejak audit login dan pelanggaran rate limit |
-| LombokDocFlow | Aplikasi | rencana | Log pemrosesan dokumen |
+| LombokClarion v3 | Framework | planned (F7) | Replaces the internal v2 log package (levels, redaction, JSON and line formatters) |
+| LombokSQL | L0 library | planned (optional) | Logging of compiled queries |
+| LombokAuth, LombokSecurity | Libraries | planned (optional) | Audit trail of logins and rate-limit violations |
+| LombokDocFlow | Application | planned | Document-processing logs |
 
-Integrasi opsional ke LombokJSON (serializer) dan LombokLocale (pesan galat) belum diimplementasikan; inti memakai serializer JSON internal yang setara.
+Optional integration with LombokJSON (serializer) and LombokLocale (error messages) is not implemented; the core uses an equivalent internal JSON serializer.
 
-## 3. Bergantung pada
+## 3. Depends on
 
-Tidak ada.
+Nothing.
 
-## 4. Jalur kontrak normatif
+## 4. Normative contract path
 
-`docs/SPEC_LombokLog_v0.1.0.md` -> `vectors/lomboklog-vectors-v1.json` (sha256 di SPEC) -> runner `rust/tests/vectors.rs` dan `typescript/test/vectors.test.ts`.
+`docs/SPEC_LombokLog_v0.1.0.md` -> `vectors/lomboklog-vectors-v1.json` (sha256 in SPEC) -> runners `rust/tests/vectors.rs` and `typescript/test/vectors.test.ts`.
 
-## 5. Peta folder
+## 5. Folder map
 
-Lihat `structure_repo_LombokLog_v0.1.0.md`.
+See `structure_repo_LombokLog_v0.1.0.md`.

@@ -1,30 +1,30 @@
 # Guide How To Use LombokLog v0.1.0
 
-## Instalasi
+## Installation
 
-Belum terbit. Setelah rilis: `npm install lomboklog` atau `cargo add lomboklog`. Sebelum itu, bangun dari repo (lihat `CONTRIBUTING.md`).
+Not published yet. After the release: `npm install lomboklog` or `cargo add lomboklog`. Until then, build from the repository (see `CONTRIBUTING.md`).
 
-## Konsep dasar
+## Basic concepts
 
-1. Sebuah **record** berisi `time`, `level`, `message`, `channel` (bawaan `app`), dan `context` (objek).
-2. `formatRecord(record, format)` meredaksi konteks, mengisi placeholder pesan, lalu merender **satu baris**.
-3. `Logger` menambahkan jam, level minimum, konteks dasar, dan sink. Sink menulis baris ke tujuan apa pun; inti tidak melakukan I/O.
+1. A **record** contains `time`, `level`, `message`, `channel` (default `app`) and `context` (an object).
+2. `formatRecord(record, format)` redacts the context, fills in the message placeholders, and then renders **one line**.
+3. `Logger` adds a clock, a minimum level, a base context and a sink. A sink writes the line to any destination; the core performs no I/O.
 
-## Contoh
+## Example
 
 ```ts
 import { Logger, ConsoleSink } from "lomboklog";
 
 const log = new Logger({ sink: new ConsoleSink(), format: "json", minLevel: "info" });
 log.info("server listening on {port}", { port: 8080 });
-log.debug("tidak dicetak");   // di bawah level minimum
+log.debug("not printed");   // below the minimum level
 ```
 
 ## Recipes
 
-### Kunci sensitif tambahan
+### Additional sensitive keys
 
-Kunci tambahan menambah daftar bawaan:
+Extra keys add to the built-in list:
 
 ```ts
 import { redact } from "lomboklog";
@@ -32,7 +32,7 @@ JSON.stringify(redact({ nik: "3201", name: "a" }, { redactKeys: ["nik"] }));
 // {"nik":"[redacted]","name":"a"}
 ```
 
-### Logger per subsistem dengan ID permintaan
+### A logger per subsystem with a request ID
 
 ```ts
 const http = new Logger({ sink, clock: () => 0, format: "json" }).child("http").with({ requestId: "r-1" });
@@ -40,7 +40,7 @@ http.info("{method} {path} {status}", { method: "GET", path: "/health", status: 
 // {"time":"1970-01-01T00:00:00.000Z","level":"info","channel":"http","message":"GET /health 200","context":{"requestId":"r-1","method":"GET","path":"/health","status":200}}
 ```
 
-### Menulis ke berkas (Rust)
+### Writing to a file (Rust)
 
 ```rust
 use lomboklog::{Level, Logger, WriterSink, Format};
@@ -50,19 +50,19 @@ let mut log = Logger::new(WriterSink(file), now).format(Format::Json);
 log.log(Level::Info, "started", &[])?;
 ```
 
-### Format untuk terminal
+### A format for the terminal
 
-`format: "line"` menghasilkan `2026-10-07T00:00:00.000Z INFO [app] pesan {"k":1}`; baris baru di pesan ditulis sebagai `\n`.
+`format: "line"` produces `2026-10-07T00:00:00.000Z INFO [app] message {"k":1}`; newlines in the message are written as `\n`.
 
 ## Common pitfalls
 
-- Redaksi berbasis **nama kunci**. Jangan menaruh rahasia di teks pesan; taruh di konteks dengan kunci yang jelas (`password`, `token`).
-- `{kunci}` hanya diisi dari nilai skalar; objek dan array membiarkan placeholder apa adanya.
-- Placeholder di pesan diisi dari konteks yang **sudah** diredaksi, sehingga `{password}` menjadi `[redacted]`.
-- Nama channel dibatasi `[A-Za-z0-9_.-]`, 1 sampai 64 karakter.
-- `formatTime` hanya menerima milidetik bilangan bulat; `Date.now()` memenuhi syarat ini.
-- `author`, `shipping`, dan kunci lain yang memuat `auth` atau `pin` ikut tersamarkan; ini disengaja.
+- Redaction is based on **key names**. Do not put secrets in the message text; put them in the context under a clear key (`password`, `token`).
+- `{key}` is only filled from scalar values; objects and arrays leave the placeholder unchanged.
+- Placeholders in the message are filled from the **already redacted** context, so `{password}` becomes `[redacted]`.
+- Channel names are limited to `[A-Za-z0-9_.-]`, 1 to 64 characters.
+- `formatTime` only accepts integer milliseconds; `Date.now()` satisfies this.
+- `author`, `shipping` and other keys containing `auth` or `pin` are also masked; this is intentional.
 
-## Lihat juga
+## See also
 
 README, SPEC_, API_.

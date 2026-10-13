@@ -2,41 +2,41 @@
 
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue)](LICENSE-APACHE)
 
-Inti logging terstruktur: delapan level RFC 5424, **redaksi rahasia yang selalu aktif**, interpolasi pesan gaya PSR-3, dan tiga formatter satu baris (JSON, line, logfmt). Tanpa dependensi runtime, tanpa I/O di inti. Hasilnya identik byte-per-byte di setiap port.
+A structured logging core: eight RFC 5424 levels, **always-on secret redaction**, PSR-3 style message interpolation, and three single-line formatters (JSON, line, logfmt). No runtime dependencies and no I/O in the core. The output is byte-identical across language ports.
 
 Part of the [Lombok Ecosystem](https://github.com/codinglombok).
 
-## Mengapa library ini?
+## Why this library?
 
-Log adalah tempat rahasia paling mudah bocor: tidak ada yang menulis `log("password: ...")`, tetapi banyak yang menulis `log("login gagal", request.body)` dan kata sandi ikut di dalam objek yang tidak pernah diperiksa. LombokLog menerapkan redaksi berbasis nama kunci **sebelum** record dirender, dan tidak menyediakan saklar untuk mematikannya.
+Logs are where secrets leak most easily: nobody writes `log("password: ...")`, but many people write `log("login failed", request.body)` and the password rides along inside an object that is never inspected. LombokLog applies key-name based redaction **before** the record is rendered, and provides no switch to turn it off.
 
-Masalah kedua adalah format yang berbeda antar bahasa. Layanan Rust dan layanan Node yang menulis ke agregator yang sama sering menghasilkan baris yang sedikit berbeda (escape, format angka, urutan kunci). LombokLog menetapkan format keluaran secara normatif dan membuktikannya dengan vector bersama.
+The second problem is format drift between languages. A Rust service and a Node service that write to the same aggregator often produce slightly different lines (escaping, number format, key order). LombokLog defines the output format normatively and proves it with shared vectors.
 
-Skenario pemakaian:
+Usage scenarios:
 
-- **Layanan web dan API**: log akses dan galat dengan konteks terstruktur; header `Authorization` dan cookie tersamarkan otomatis.
-- **Alat CLI dan job batch**: format `line` yang mudah dibaca di terminal, format `json` untuk berkas.
-- **Serverless dan edge**: inti tanpa dependensi, satu baris per record untuk pengumpul log platform.
-- **Perangkat tertanam**: inti Rust `no_std + alloc` dengan `MemorySink` atau sink buatan sendiri.
-- **Pipeline observabilitas**: format `logfmt` untuk alat yang membaca pasangan `kunci=nilai`.
+- **Web services and APIs**: access and error logs with structured context; `Authorization` headers and cookies are masked automatically.
+- **CLI tools and batch jobs**: a `line` format that is easy to read in a terminal, a `json` format for files.
+- **Serverless and edge**: a dependency-free core, one line per record for the platform log collector.
+- **Embedded devices**: a `no_std + alloc` Rust core with `MemorySink` or a custom sink.
+- **Observability pipelines**: a `logfmt` format for tools that read `key=value` pairs.
 
-Contoh dependen lain di ekosistem Lombok dicantumkan di `docs/map_LombokLog_v0.1.0.md`.
+Other dependents in the Lombok Ecosystem are listed in `docs/map_LombokLog_v0.1.0.md`.
 
-## Fitur
+## Features
 
-Setiap fitur di bawah ini dicakup vector di `vectors/` dan test TypeScript.
+Every feature below is covered by vectors in `vectors/` and by TypeScript tests.
 
-- Level RFC 5424 (`emergency` .. `debug`), `parseLevel` peka-huruf ASCII, `severity`, `isEnabled`.
-- `redact`: kunci yang mengandung salah satu dari 19 substring sensitif (ASCII, tanpa beda huruf besar-kecil) diganti `[redacted]`; kunci tambahan menambah, tidak mengganti, daftar bawaan; kedalaman lebih dari 16 menjadi `[truncated]`.
-- `interpolate`: placeholder `{kunci}` diisi nilai skalar dari konteks; nilai tidak diekspansi ulang.
-- `formatRecord`: format `json`, `line`, `logfmt`; selalu tepat satu baris (baris baru dan karakter kontrol di-escape).
-- `formatTime`: milidetik epoch ke ISO 8601 UTC dengan milidetik.
-- Format angka dan escape string identik dengan `JSON.stringify` di semua port.
-- `Logger` runtime dengan level minimum, jam yang dapat disuntikkan, konteks dasar, dan sink (`MemorySink`, `ConsoleSink`; Rust: `MemorySink`, `WriterSink`).
+- RFC 5424 levels (`emergency` .. `debug`), `parseLevel` with ASCII case folding, `severity`, `isEnabled`.
+- `redact`: a key that contains any of 19 sensitive substrings (ASCII, case-insensitive) is replaced by `[redacted]`; extra keys add to, and never replace, the built-in list; depth beyond 16 becomes `[truncated]`.
+- `interpolate`: `{key}` placeholders are filled with scalar values from the context; values are never re-expanded.
+- `formatRecord`: `json`, `line` and `logfmt` formats; always exactly one line (newlines and control characters are escaped).
+- `formatTime`: epoch milliseconds to ISO 8601 UTC with milliseconds.
+- Number formatting and string escaping are identical to `JSON.stringify` in every port.
+- A runtime `Logger` with a minimum level, an injectable clock, base context and sinks (`MemorySink`, `ConsoleSink`; Rust: `MemorySink`, `WriterSink`).
 
-## Instalasi
+## Installation
 
-Belum terbit di registry. Setelah rilis pertama:
+Not published to any registry yet. After the first release:
 
 ```bash
 npm install lomboklog      # TypeScript / JavaScript
@@ -70,37 +70,37 @@ let line = format_record(&rec, Format::Json, &RedactOptions::default()).unwrap()
 assert_eq!(line, r#"{"time":"2026-10-07T00:00:00.000Z","level":"error","channel":"app","message":"db down","context":{"token":"[redacted]"}}"#);
 ```
 
-## Status port
+## Port status
 
-| Port | Status | Bukti |
+| Port | Status | Evidence |
 |---|---|---|
-| Rust (`no_std + alloc`) | YA, lulus vector | `rust/tests/vectors.rs` menjalankan seluruh vector; build `thumbv7em-none-eabi` |
-| TypeScript | YA, lulus vector | `typescript/test/vectors.test.ts` menjalankan seluruh vector; ditambah test `Logger` dan fuzz |
-| Python, Go, PHP, Java, Kotlin, C#, C/C++, Swift, Perl | BELUM | Tidak ada kode; direncanakan setelah kontrak stabil (lihat `docs/development_ide_LombokLog_v0.1.0.md`) |
+| Rust (`no_std + alloc`) | YES, passes the vectors | `rust/tests/vectors.rs` runs every vector; `thumbv7em-none-eabi` build |
+| TypeScript | YES, passes the vectors | `typescript/test/vectors.test.ts` runs every vector, plus `Logger` and fuzz tests |
+| Python, Go, PHP, Java, Kotlin, C#, C/C++, Swift, Perl | NOT YET | No code; planned once the contract is stable (see `docs/development_ide_LombokLog_v0.1.0.md`) |
 
-Vector: 290 kasus (200 golden berekspektasi tulis tangan, 90 regresi hasil pembangkit).
+Vectors: 290 cases (200 golden cases with hand-written expectations, 90 generated regression cases).
 
-## Standar yang diimplementasikan
+## Standards implemented
 
-RFC 5424 (nama dan urutan severity), RFC 8259 (keluaran JSON), ISO 8601 / RFC 3339 (stempel waktu). Kontrak keluaran ditentukan oleh `docs/SPEC_LombokLog_v0.1.0.md`.
+RFC 5424 (severity names and order), RFC 8259 (JSON output), ISO 8601 / RFC 3339 (timestamps). The output contract is defined by `docs/SPEC_LombokLog_v0.1.0.md`.
 
-## Batasan yang diketahui
+## Known limitations
 
-- Redaksi berbasis nama kunci, bukan isi nilai. Rahasia di dalam teks pesan atau di nilai berkunci netral tidak terdeteksi.
-- Pencocokan substring sengaja tumpul: `author` dan `shipping` ikut tersamarkan (`auth`, `pin`).
-- Tidak ada rotasi berkas, buffering asinkron, atau pengiriman jaringan; itu tugas sink milik aplikasi.
-- Format `logfmt` tidak mencegah kunci konteks yang sama dengan kunci bawaan (`level`, `msg`).
-- Hanya Rust dan TypeScript yang memiliki kode.
-- Belum ada audit keamanan pihak ketiga. Fuzz bersifat pseudo-fuzz, belum `cargo-fuzz`.
+- Redaction is based on key names, not on value content. Secrets inside message text or under neutrally named keys are not detected.
+- Substring matching is deliberately blunt: `author` and `shipping` are also masked (`auth`, `pin`).
+- There is no file rotation, asynchronous buffering or network delivery; that is the job of an application-owned sink.
+- The `logfmt` format does not prevent a context key from colliding with a built-in key (`level`, `msg`).
+- Only Rust and TypeScript have code.
+- No third-party security audit yet. Fuzzing is pseudo-fuzzing, not `cargo-fuzz`.
 
-## Ekosistem Lombok
+## Lombok Ecosystem
 
-LombokLog tidak bergantung pada library Lombok lain (L0). Library lain dapat memakainya secara opsional; daftar dependen ada di `docs/map_LombokLog_v0.1.0.md`.
+LombokLog has no required dependency on other Lombok libraries (L0). Other libraries may use it optionally; the dependents are listed in `docs/map_LombokLog_v0.1.0.md`.
 
 ## Contributing
 
-Lihat [CONTRIBUTING.md](CONTRIBUTING.md). Untuk melaporkan kerentanan lihat [SECURITY.md](SECURITY.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md). To report a vulnerability, see [SECURITY.md](SECURITY.md).
 
-## Lisensi
+## License
 
-`Apache-2.0 OR MIT`. Lihat [LICENSE-APACHE](LICENSE-APACHE) dan [LICENSE-MIT](LICENSE-MIT).
+`Apache-2.0 OR MIT`. See [LICENSE-APACHE](LICENSE-APACHE) and [LICENSE-MIT](LICENSE-MIT).

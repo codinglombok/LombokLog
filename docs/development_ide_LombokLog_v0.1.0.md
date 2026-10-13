@@ -2,29 +2,30 @@
 
 ## 1. Roadmap
 
-| Versi | Isi |
+| Version | Content |
 |---|---|
-| 0.1.1 | Tutup syarat rilis: CI dijalankan, `doctor docs/privacy/style`, coverage diukur, target `cargo-fuzz` |
-| 0.2.0 | Format syslog RFC 5424 dan GELF; sink berkas dengan rotasi (std); port Python, Go, PHP |
-| 0.3.0 | Redaksi berbasis pola nilai opsional (nomor kartu dengan Luhn, JWT); sampling; integrasi LombokLocale |
+| 0.1.1 | Close the release conditions: CI run, `doctor docs/privacy/style`, coverage measured, a `cargo-fuzz` target |
+| 0.2.0 | RFC 5424 syslog and GELF formats; a file sink with rotation (std); Python, Go and PHP ports |
+| 0.3.0 | Optional value-pattern redaction (card numbers with Luhn, JWTs); sampling; LombokLocale integration |
 
 ## 2. Deferred scope
 
-Lihat SPEC bagian Non-goals dan README (Batasan).
+See the Non-goals section of the SPEC and the README (Known limitations).
 
-## 3. Prinsip desain kontributor
+## 3. Design principles for contributors
 
-- Kontrak dulu, test dulu; semua port lulus vector yang sama.
-- Tidak ada dependensi runtime; dev-dependency dicatat.
-- Fungsi inti murni: jam, keacakan, dan I/O dipasok pemanggil.
-- Setiap baris keluaran tetap satu baris apa pun masukannya.
-- Daftar kunci sensitif hanya bertambah, tidak pernah berkurang lewat opsi.
+- Contract first, tests first; all ports pass the same vectors.
+- No runtime dependencies; dev dependencies are recorded.
+- Core functions are pure: the clock, randomness and I/O are supplied by the caller.
+- Every output line stays one line whatever the input.
+- The list of sensitive keys only grows; it never shrinks through options.
+- English is the default language for all documents, code comments and messages.
 
-## 4. Cara berkontribusi
+## 4. How to contribute
 
-Lihat `CONTRIBUTING.md`.
+See `CONTRIBUTING.md`.
 
-## 5. Pertanyaan terbuka
+## 5. Open questions
 
-- Apakah pencocokan kunci sebaiknya berbasis token (`pin` tidak cocok dengan `shipping`) dengan risiko kebocoran yang lebih besar?
-- Apakah `logfmt` perlu awalan untuk kunci konteks (`ctx.`) agar tidak bertabrakan dengan kunci bawaan?
+- Should key matching be token-based (so that `pin` does not match `shipping`), at the cost of a greater risk of leaks?
+- Does `logfmt` need a prefix for context keys (`ctx.`) so that they do not collide with built-in keys?

@@ -1,16 +1,16 @@
-# Changelog LombokLog (ringkasan)
+# Changelog LombokLog (summary)
 
-Entri terbaru di depan. Rincian ada di `CHANGELOG.md`.
+The newest entry comes first. Details are in `CHANGELOG.md`.
 
 ## 0.1.0 - 2026-10-07
 
 ### Added
-- Level RFC 5424, redaksi, interpolasi, formatter `json`/`line`/`logfmt`, `formatTime`.
-- `Logger` dan sink.
-- Port Rust `no_std + alloc` dan port TypeScript.
-- Vector 290 kasus; runner di kedua port; fuzz, uji mutasi.
+- RFC 5424 levels, redaction, interpolation, `json`/`line`/`logfmt` formatters, `formatTime`.
+- `Logger` and sinks.
+- Rust `no_std + alloc` port and TypeScript port.
+- 290 vectors; runners in both ports; fuzzing and mutation testing.
 
 ### Security
-- Redaksi selalu aktif sebelum interpolasi dan render; tidak dapat dimatikan.
-- Satu record selalu tepat satu baris (mencegah pemalsuan baris log).
-- Batas kedalaman konteks 16 dan batas parser JSON 512.
+- Redaction is always applied before interpolation and rendering; it cannot be turned off.
+- One record is always exactly one line (prevents log-line forgery).
+- Context depth limit of 16 and JSON parser limit of 512.

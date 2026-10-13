@@ -1,25 +1,25 @@
-# Kebijakan Keamanan
+# Security Policy
 
-## Versi yang didukung
+## Supported versions
 
-| Versi | Dukungan |
+| Version | Support |
 |---|---|
-| 0.1.x | Perbaikan keamanan |
+| 0.1.x | Security fixes |
 
-## Melaporkan kerentanan
+## Reporting a vulnerability
 
-Gunakan **GitHub Private Vulnerability Reporting** pada repo ini (tab Security, "Report a vulnerability"). Jangan membuka issue publik untuk kerentanan.
+Use **GitHub Private Vulnerability Reporting** on this repository (Security tab, "Report a vulnerability"). Do not open a public issue for a vulnerability.
 
-- Respons awal: paling lama 48 jam.
-- Perbaikan untuk temuan kritis: target 7 hari.
-- Pengungkapan dikoordinasikan dengan pelapor.
+- Initial response: within 48 hours.
+- Fix for critical findings: 7 days (target).
+- Disclosure is coordinated with the reporter.
 
-## Cakupan
+## Scope
 
-Dalam cakupan: formatter dan redaksi (`redact`, `formatRecord`, `interpolate`), khususnya cara apa pun agar nilai di bawah kunci sensitif lolos ke keluaran, satu record menghasilkan lebih dari satu baris, atau masukan menyebabkan panic, crash, atau waktu eksekusi tak terbatas.
+In scope: the formatter and redaction (`redact`, `formatRecord`, `interpolate`), in particular any way for a value under a sensitive key to reach the output, for one record to produce more than one line, or for an input to cause a panic, a crash or unbounded execution time.
 
-Di luar cakupan: handler I/O milik aplikasi (berkas, jaringan), rotasi berkas, dan pengiriman log ke layanan eksternal.
+Out of scope: application-owned I/O handlers (files, network), file rotation, and shipping logs to external services.
 
-## Model ancaman ringkas
+## Short threat model
 
-Lihat bagian Keamanan pada `docs/SPEC_LombokLog_v0.1.0.md`.
+See the Security section of `docs/SPEC_LombokLog_v0.1.0.md`.

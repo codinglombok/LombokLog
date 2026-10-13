@@ -1,43 +1,43 @@
 # Full Summary LombokLog v0.1.0
 
-## Apa ini
+## What it is
 
-Inti logging terstruktur: level RFC 5424, redaksi rahasia yang selalu aktif, interpolasi pesan, dan formatter satu baris JSON, line, dan logfmt yang identik antar bahasa.
+A structured logging core: RFC 5424 levels, always-on secret redaction, message interpolation, and single-line JSON, line and logfmt formatters that are identical across languages.
 
-## Mengapa dibuat
+## Why it exists
 
-Rahasia paling sering bocor lewat log karena objek konteks dicatat utuh tanpa diperiksa. Redaksi yang harus diingat untuk diaktifkan akan terlupa. Selain itu layanan dalam bahasa berbeda menghasilkan baris log yang sedikit berbeda untuk data yang sama, sehingga parser di agregator harus menangani banyak variasi.
+Secrets leak most often through logs because a context object is logged whole without being inspected. Redaction that has to be remembered and switched on gets forgotten. In addition, services in different languages produce slightly different log lines for the same data, so parsers in the aggregator have to handle many variations.
 
-## Fitur utama
+## Main features
 
-Lihat README (bagian Fitur). Semua fitur dicakup vector.
+See the README (Features section). All features are covered by vectors.
 
-## Status saat ini
+## Current status
 
-Kode lengkap untuk Rust dan TypeScript; lulus 290 kasus vector; belum terbit di registry; belum memenuhi aturan skor rilis (lihat `TECH_DEBT.md`).
+Complete code for Rust and TypeScript; passes 290 vector cases; not yet published to any registry; does not yet meet the release score rule (see `TECH_DEBT.md`).
 
-## Contoh pemakai
+## Example users
 
-Lihat README (skenario pemakaian).
+See the README (usage scenarios).
 
-## Batasan yang Diketahui
+## Known Limitations
 
-- Redaksi berbasis nama kunci; rahasia di teks pesan atau di kunci netral tidak terdeteksi.
-- Pencocokan substring tumpul: `author` dan `shipping` ikut tersamarkan.
-- Tidak ada rotasi berkas, buffering asinkron, sampling, atau pengiriman jaringan.
-- `logfmt` tidak mencegah kunci konteks yang sama dengan kunci bawaan.
-- Format syslog RFC 5424 lengkap (PRI, structured data) belum ada.
-- Hanya dua port (Rust, TypeScript); fuzz berupa pseudo-fuzz, belum `cargo-fuzz`; belum audit pihak ketiga; coverage belum diukur.
+- Redaction is based on key names; secrets in message text or under neutral keys are not detected.
+- Substring matching is blunt: `author` and `shipping` are also masked.
+- No file rotation, asynchronous buffering, sampling or network delivery.
+- `logfmt` does not prevent a context key from colliding with a built-in key.
+- The full RFC 5424 syslog format (PRI, structured data) is not available yet.
+- Only two ports (Rust, TypeScript); fuzzing is pseudo-fuzzing, not `cargo-fuzz`; no third-party audit; coverage not measured yet.
 
-## Info lanjut
+## More information
 
-SPEC_, API_, `development_ide_`.
+`SPEC_`, `API_`, `development_ide_`.
 
-## Gap vs pembanding (U6)
+## Gap vs comparators (U6)
 
-Perbandingan bersifat kualitatif dan berdasarkan pengetahuan umum tentang kategori library; belum diverifikasi fitur demi fitur pada 2026-10-07.
+The comparison is qualitative and based on general knowledge of each category of library; it has not been verified feature by feature on 2026-10-07.
 
-| Pembanding (kategori) | Yang dimiliki pembanding dan belum dimiliki LombokLog | Yang ditawarkan LombokLog |
+| Comparator (category) | What the comparator has that LombokLog does not | What LombokLog offers |
 |---|---|---|
-| Logger satu bahasa (pino, winston, tracing, slog, Monolog) | Transport dan rotasi, sampling, span dan trace, integrasi framework, kinerja yang sudah diukur | Kontrak format lintas bahasa dengan vector bersama; redaksi wajib; inti `no_std + alloc`; tanpa dependensi |
-| Pustaka redaksi terpisah | Deteksi pola berbasis nilai (nomor kartu, JWT) | Redaksi terpadu di jalur render sehingga tidak dapat terlewat |
+| Single-language loggers (pino, winston, tracing, slog, Monolog) | Transports and rotation, sampling, spans and traces, framework integration, measured performance | A cross-language format contract with shared vectors; mandatory redaction; a `no_std + alloc` core; no dependencies |
+| Standalone redaction libraries | Value-based pattern detection (card numbers, JWTs) | Redaction integrated into the render path so it cannot be skipped |
